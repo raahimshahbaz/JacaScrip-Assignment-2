@@ -1,0 +1,127 @@
+ASSIGNMENT NO 2
+
+Submission by Raahim Shahbaz
+Instructor name: Sir Ishaq Bhojani 
+Course: JavaScript Crash Course
+Date: 11th April 2023
+
+
+Answer no 1 code:
+
+function createAdder(num) {
+  return function adder(x) {
+    return num + x;
+  };
+}
+
+const addFive = createAdder(5);
+console.log(addFive(10)); // outputs 15
+console.log(addFive(2)); // outputs 7
+
+Answer no 2 code:
+
+function searchArray(arr, val) {
+  // base case
+  if (arr.length === 0) {
+    return false;
+  }
+
+  // recursive case
+  const first = arr[0];
+  if (first === val) {
+    return true;
+  } else {
+    const rest = arr.slice(1);
+    return searchArray(rest, val);
+  }
+}
+
+const myArray = [1, 2, 3, 4, 5];
+console.log(searchArray(myArray, 3)); // outputs true
+console.log(searchArray(myArray, 6)); // outputs false
+
+Answer no 3 code:
+
+function addParagraph(text) {
+  const newParagraph = document.createElement('p');
+  const paragraphText = document.createTextNode(text);
+  newParagraph.appendChild(paragraphText);
+document.body.appendChild(newParagraph);
+}
+
+addParagraph('This is a new paragraph!');
+
+Answer no 4 code: 
+
+function addListItem(text) {
+  const newListElement = document.createElement('li');
+  const listText = document.createTextNode(text);
+  newListElement.appendChild(listText);
+  const list = document.querySelector('ul');
+  list.appendChild(newListElement);
+}
+
+addListItem('New list item!');
+
+Answer no 5 code: 
+
+function changeBackgroundColor(element, color) {
+  element.style.backgroundColor = color;
+}
+
+// get a reference to the HTML element you want to change the background color of
+const myElement = document.getElementById("myElement");
+
+// call the changeBackgroundColor function and pass in the element and color arguments
+changeBackgroundColor(myElement, "red");
+
+Answer no 6  code:
+
+
+function saveObjectToLocalStorage(key, obj) {
+  localStorage.setItem(key, JSON.stringify(obj));
+}
+
+const myObject = { name: "John", age: 30 };
+saveObjectToLocalStorage("myKey", myObject);
+
+const savedObject = JSON.parse(localStorage.getItem("myKey"));
+console.log(savedObject); // { name: "John", age: 30 }
+
+Answer no 7 code:
+
+function getObjectFromLocalStorage(key) {
+  const objString = localStorage.getItem(key);
+  if (objString) {
+    return JSON.parse(objString);
+  }
+  return null;
+}
+
+
+Answer 8 code:
+
+function saveObjectPropertiesToLocalStorage(obj) {
+  // save each property to localStorage
+  for (const [key, value] of Object.entries(obj)) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+  
+  // retrieve the object from localStorage
+  const newObj = {};
+  for (const key in obj) {
+    const objString = localStorage.getItem(key);
+    if (objString) {
+      newObj[key] = JSON.parse(objString);
+    }
+  }
+  
+  return newObj;
+}
+
+
+const myObject = { name: "Raahim", age: 20};
+const newObject = saveObjectPropertiesToLocalStorage(myObject);
+console.log(newObject); // { name: "Raahim", age: 20 }
+
+
